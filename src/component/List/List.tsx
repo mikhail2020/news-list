@@ -2,6 +2,9 @@ import React from 'react';
 import { Layout } from 'antd';
 import { useEffect } from 'react';
 import { fetchNews, NewsItem } from '../../api/fetchNews';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store';
+import { fetchNewsAsync } from '../../store/newsSlice';
 
 const { Content } = Layout;
 
@@ -9,18 +12,13 @@ const { Content } = Layout;
 
 
 export const List = () => {
-    const [news, setNews] = React.useState<NewsItem[]>([]);
-    const [loading, setLoading] = React.useState<boolean>(true);
-    const [error, setError] = React.useState<string | null>(null);
+
+    const dispatch = useDispatch<AppDispatch>();
+    const { news, loading, error } = useSelector((state: RootState) => state.news);
 
     useEffect(() => {
-
-        fetchNews()
-            .then(res => setNews(res.posts))
-            .catch(err => setError(err.message))
-            .finally(() => setLoading(false))
-    }, []);
-
+        dispatch(fetchNewsAsync());
+    }, [dispatch]);
 
     return (
         <Content style={contentStyle}>
