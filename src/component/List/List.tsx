@@ -1,10 +1,10 @@
-import React, { useCallback, useLayoutEffect, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { Layout } from 'antd';
 import { useEffect } from 'react';
-import { fetchNews, NewsItem } from '../../api/fetchNews';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../store';
 import { fetchNewsAsync } from '../../store/newsSlice';
+import { NewsCard } from '../NewsCard/NewsCard';
 
 const { Content } = Layout;
 
@@ -60,7 +60,7 @@ export const List = () => {
             },
             {
                 root: null,
-                rootMargin: '100px', 
+                rootMargin: '100px',
             }
         );
 
@@ -79,8 +79,7 @@ export const List = () => {
                 <ul>
                     {news.map(newsItem => (
                         <li key={newsItem.id}>
-                            <h3>{newsItem.title}</h3>
-                            <p>{newsItem.body}</p>
+                            <NewsCard newsItem={newsItem} />
                         </li>
                     ))}
                 </ul>
@@ -92,10 +91,7 @@ export const List = () => {
 
 const contentStyle: React.CSSProperties = {
     textAlign: 'center',
-    minHeight: 120,
-    lineHeight: '120px',
-    color: '#fff',
-    backgroundColor: '#0958d9',
+    backgroundColor: '#4096ff',
 };
 
 

@@ -7,24 +7,17 @@ import { List } from '../List/List';
 
 function App() {
   return (
-    <div className="App">
-      <Layout style={layoutStyle}>
-        <Header />
-        <List />
-      </Layout>
-    </div>
+    <Layout className='layout-container'
+    >
+      <Header />
+      <List />
+    </Layout>
   );
 }
 
 export default App;
 
 
-const layoutStyle = {
-  borderRadius: 8,
-  overflow: 'hidden',
-  width: 'calc(50% - 8px)',
-  maxWidth: 'calc(50% - 8px)',
-};
 
 
 

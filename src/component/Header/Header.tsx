@@ -5,7 +5,7 @@ const { Header: AntHeader } = Layout;
 
 export const Header = () => {
     return (
-        <AntHeader style={headerStyle}>Заголовок</AntHeader>
+        <AntHeader style={headerStyle}>Новости</AntHeader>
     )
 }
 
@@ -15,5 +15,6 @@ const headerStyle: React.CSSProperties = {
     height: 64,
     paddingInline: 48,
     lineHeight: '64px',
-    backgroundColor: '#4096ff',
+    backgroundColor: '#0958d9',
+    fontSize: '2rem',
 };
