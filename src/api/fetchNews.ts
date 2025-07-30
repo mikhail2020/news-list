@@ -1,5 +1,6 @@
 
-export async function fetchNews(limit = 10, skip = 0): Promise<NewsResponse> {
+export async function fetchNews(skip: number): Promise<NewsResponse> {
+    const limit = 10;
     const response = await fetch(`https://dummyjson.com/posts?limit=${limit}&skip=${skip}`);
 
     if (!response.ok) {
@@ -26,7 +27,7 @@ type Reactions = {
     likes: number
 }
 
-interface NewsResponse {
+export interface NewsResponse {
     posts: NewsItem[];
     total: number;
     skip: number;
